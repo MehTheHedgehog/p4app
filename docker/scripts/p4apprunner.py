@@ -146,7 +146,7 @@ def run_mininet(manifest):
     # We'll place the switch's log file in '/var/log'. The Dockerfile places a
     # volume at this path. This works around the fact that Ubuntu 14.04 includes
     # a version of 'tail' which doesn't interact well with overlayfs.
-    log_file = os.path.join('/var/log', manifest.program_file + '.log')
+    log_file = os.path.join('/var/log', (os.path.split(manifest.program_file)[-1]) + '.log')
     switch_args.append('--log-file "%s"' % log_file)
 
     # Generate a message that will be printed by the Mininet CLI to make
